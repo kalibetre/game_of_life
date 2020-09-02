@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of life</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="favicon.ico">
+    <script defer src="main.dart.js"></script>
+</head>
+
+<body>
+    <div id="gameboard">
+    <div id="gameTitleBar">
+        <h1 id="header">Conway's Game of Life</h1>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+    <div class="toolbar">
+        <img id="playPauseButton" class="customButton" src="resources/images/pause_button.png"/>
+    </div>
+        <section>
+            <header><p>Example Patterns (Click to load)</p></header>
+            <div id="patternsContainer">
+                <div id="loadAcronButton" class="card"><p>Acron</p></div>
+                <div id="loadDieHardButton" class="card"><p>Die Hard</p></div>
+                <div id="loadGosperButton" class="card"><p>Gosper Glider Gun</p></div>
+                <div id="loadInfiniteOneButton" class="card"><p>Infinite Growth 1</p></div>
+                <div id="loadInfiniteTwoButton" class="card"><p>Infinite Growth 2</p></div>
+                <div id="loadInfiniteThreeButton" class="card"><p>Infinite Growth 3</p></div>
+                <div id="loadRPentominoButton" class="card"><p>R-Pentomino</p></div>
+                <div id="loadSimkinButton" class="card"><p>Simkin Glider Gun</p></div>
+                <div id="randomizeButton" class="card"><p>Randomize</p></div>
+            </div>
+        </section>
+        <section id="customPattern">
+            <header><p>Custom Patterns (use '.' for dead Cells and '#' for live Cells)</p></header>
+            <div id="customPatternContainer">
+                <textarea id="customPatterTextArea"></textarea>
+                <img id="loadButton" class="customButton borderedButton" src="resources/images/load_button.png"/>
+            </div>
+        </section>
+        <footer id="mainFooter">
+            <p>Version 0.1 beta</p>
+        </footer>
+<!--        Developed by Kalkidan Betre (kalbetre.dev@gmail.com)-->
+  </div>
+</body>
+</html>
