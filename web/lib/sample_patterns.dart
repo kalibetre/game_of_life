@@ -57,10 +57,10 @@ class SamplePatterns {
                                          ''';
 
   static const String rPentominoPattern = ''' 
-  ..##.
-  .##..
-  ..#..
-      ''';
+..##.
+.##..
+..#..
+    ''';
 
   static const String simkinGliderGunPattern = ''' 
 ...................................

@@ -20,7 +20,8 @@ void main() {
   DivElement loadGosperButton = querySelector('#loadGosperButton');
   DivElement loadInfiniteOneButton = querySelector('#loadInfiniteOneButton');
   DivElement loadInfiniteTwoButton = querySelector('#loadInfiniteTwoButton');
-  DivElement loadInfiniteThreeButton = querySelector('#loadInfiniteThreeButton');
+  DivElement loadInfiniteThreeButton =
+      querySelector('#loadInfiniteThreeButton');
   DivElement loadRPentominoButton = querySelector('#loadRPentominoButton');
   DivElement loadSimkinButton = querySelector('#loadSimkinButton');
   DivElement randomizeButton = querySelector('#randomizeButton');
@@ -62,7 +63,6 @@ void main() {
     gameBoard.randomizeGameBoard();
   });
 
-
   ImageElement loadButton = querySelector('#loadButton');
   TextAreaElement textAreaElement = querySelector('#customPatterTextArea');
   textAreaElement.value = SamplePatterns.gosperGliderGunPattern;
@@ -72,9 +72,4 @@ void main() {
     print(pattern);
     gameBoard.loadPattern(pattern);
   });
-
-}
-
-void playPauseGame() {
-
 }

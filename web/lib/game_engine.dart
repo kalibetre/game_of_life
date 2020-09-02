@@ -18,8 +18,8 @@ class GameEngine {
       _lastRenderTimeStamp = timeStamp;
     }
 
-    if(timeStamp - _lastRenderTimeStamp >= _minRenderInterval) {
-      if(!_isGamePaused) {
+    if (timeStamp - _lastRenderTimeStamp >= _minRenderInterval) {
+      if (!_isGamePaused) {
         _gameBoard.nextPattern();
         renderGame();
       }
@@ -32,8 +32,8 @@ class GameEngine {
     CanvasRenderingContext2D c2d;
     c2d = _canvasElement.getContext('2d');
 
-    for(var row in _gameBoard.cells) {
-      for(var cell in row) {
+    for (var row in _gameBoard.cells) {
+      for (var cell in row) {
         c2d
           ..fillStyle = cell.isAlive ? _colors[0] : _colors[1]
           ..fillRect(cell.locationX, cell.locationY, cell.size, cell.size);

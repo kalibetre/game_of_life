@@ -25,7 +25,7 @@ class GameBoard {
   void randomizeGameBoard() {
     for (var row = 0; row < _numberOfRows; ++row) {
       for (var col = 0; col < _numberOfCols; ++col) {
-        if(_randomGenerator.nextBool()) {
+        if (_randomGenerator.nextBool()) {
           cells[row][col].isAlive = _randomGenerator.nextBool();
         }
       }
@@ -43,23 +43,37 @@ class GameBoard {
 
     for (var row = 0; row < _numberOfRows; ++row) {
       for (var col = 0; col < _numberOfCols; ++col) {
-
         var neighbors = [];
-        neighbors.add( row >= 1 && col >= 1 ? previousCells[row - 1][col - 1] : Cell.deadCell() );
-        neighbors.add( col >= 1 && col >= 1 ? previousCells[row][col - 1] : Cell.deadCell() );
-        neighbors.add( row < _numberOfRows - 1 && col >= 1 ? previousCells[row + 1][col - 1] : Cell.deadCell() );
+        neighbors.add(row >= 1 && col >= 1
+            ? previousCells[row - 1][col - 1]
+            : Cell.deadCell());
+        neighbors.add(col >= 1 && col >= 1
+            ? previousCells[row][col - 1]
+            : Cell.deadCell());
+        neighbors.add(row < _numberOfRows - 1 && col >= 1
+            ? previousCells[row + 1][col - 1]
+            : Cell.deadCell());
 
-        neighbors.add( row >= 1 ? previousCells[row - 1][col] : Cell.deadCell() );
-        neighbors.add( row < _numberOfRows - 1 ? previousCells[row + 1][col] : Cell.deadCell() );
+        neighbors.add(row >= 1 ? previousCells[row - 1][col] : Cell.deadCell());
+        neighbors.add(row < _numberOfRows - 1
+            ? previousCells[row + 1][col]
+            : Cell.deadCell());
 
-        neighbors.add( row >= 1 && col < _numberOfCols - 1 ? previousCells[row - 1][col + 1] : Cell.deadCell() );
-        neighbors.add( col < _numberOfCols - 1 ? previousCells[row][col + 1] : Cell.deadCell() );
-        neighbors.add( row < _numberOfRows - 1 && col < _numberOfCols - 1 ? previousCells[row + 1][col + 1] : Cell.deadCell() );
+        neighbors.add(row >= 1 && col < _numberOfCols - 1
+            ? previousCells[row - 1][col + 1]
+            : Cell.deadCell());
+        neighbors.add(col < _numberOfCols - 1
+            ? previousCells[row][col + 1]
+            : Cell.deadCell());
+        neighbors.add(row < _numberOfRows - 1 && col < _numberOfCols - 1
+            ? previousCells[row + 1][col + 1]
+            : Cell.deadCell());
 
         var liveNeighbors = neighbors.where((cell) => cell.isAlive).length;
 
         // Rule 1 or Rule 3
-        if (previousCells[row][col].isAlive && (liveNeighbors < 2 || liveNeighbors > 3)) {
+        if (previousCells[row][col].isAlive &&
+            (liveNeighbors < 2 || liveNeighbors > 3)) {
           cells[row][col].isAlive = false;
         }
         // Rule 4
@@ -93,7 +107,7 @@ class GameBoard {
 
   void clearBoard() {
     for (var row = 0; row < _numberOfRows; ++row) {
-      for (var col = 0; col < _numberOfCols; ++col)  {
+      for (var col = 0; col < _numberOfCols; ++col) {
         cells[row][col].isAlive = false;
       }
     }
@@ -102,13 +116,13 @@ class GameBoard {
   void loadPattern(String patternString) {
     clearBoard();
     var pattern = getPatternFromString(patternString);
-    for(var pair in pattern) {
+    for (var pair in pattern) {
       cells[pair.first][pair.second].isAlive = true;
     }
   }
 
-  List<Pair<int,int>> getPatternFromString(String patternString) {
-    var pattern = <Pair<int,int>>[];
+  List<Pair<int, int>> getPatternFromString(String patternString) {
+    var pattern = <Pair<int, int>>[];
     var lines = patternString.split('\n').toList();
 
     var centerRow = _numberOfRows ~/ 2;
@@ -116,9 +130,9 @@ class GameBoard {
     var rowOffset = centerRow - lines.length ~/ 2;
     var colOffset = centerCol - lines[0].length ~/ 2;
 
-    for(var row = 0; row < lines.length; ++row) {
+    for (var row = 0; row < lines.length; ++row) {
       lines[row] = lines[row].trim();
-      for(var col = 0; col < lines[row].length; ++col) {
+      for (var col = 0; col < lines[row].length; ++col) {
         if (lines[row][col] == '#') {
           pattern.add(Pair(row + rowOffset, col + colOffset));
         }
@@ -128,4 +142,3 @@ class GameBoard {
     return pattern;
   }
 }
-
